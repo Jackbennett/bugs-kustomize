@@ -1,0 +1,11 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cloud
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: testing
+              servicePort: 80

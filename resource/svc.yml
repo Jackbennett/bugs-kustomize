@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: resource
+spec:
+  ports:
+    - name: resource
+      protocol: TCP
+      port: 1234
+      targetPort: 1234

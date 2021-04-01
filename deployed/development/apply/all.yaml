@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: component_b
+    for: github
+  name: devices
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: component_b
+    for: github
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: component_b
+    for: github
+  name: portal
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: component_b
+    for: github
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: component_b
+    for: github
+  name: resource
+spec:
+  ports:
+  - name: resource
+    port: 1234
+    protocol: TCP
+    targetPort: 1234
+  selector:
+    app: component_b
+    for: github
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  labels:
+    app: component_b
+    for: github
+    project: overall_example
+  name: cloud
+spec:
+  rules:
+  - host: patched.example.com
+    http:
+      paths:
+      - backend:
+          serviceName: testing
+          servicePort: 80
